@@ -1,0 +1,17 @@
+C:\Users\Admin\Desktop\Game\FlappyBirdGame\FlappyBirdGameTests\obj\Debug\FlappyBirdGameTests.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\Game\FlappyBirdGame\FlappyBirdGameTests\obj\Debug\FlappyBirdGameTests.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\Game\FlappyBirdGame\FlappyBirdGameTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Admin\Desktop\Game\FlappyBirdGame\FlappyBirdGameTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Admin\Desktop\Game\FlappyBirdGame\FlappyBirdGameTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Admin\Desktop\Game\FlappyBirdGame\FlappyBirdGameTests\bin\Debug\FlappyBirdGameTests.dll
+C:\Users\Admin\Desktop\Game\FlappyBirdGame\FlappyBirdGameTests\bin\Debug\FlappyBirdGameTests.pdb
+C:\Users\Admin\Desktop\Game\FlappyBirdGame\FlappyBirdGameTests\bin\Debug\FlappyBirdGame.exe
+C:\Users\Admin\Desktop\Game\FlappyBirdGame\FlappyBirdGameTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Admin\Desktop\Game\FlappyBirdGame\FlappyBirdGameTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Admin\Desktop\Game\FlappyBirdGame\FlappyBirdGameTests\bin\Debug\FlappyBirdGame.pdb
+C:\Users\Admin\Desktop\Game\FlappyBirdGame\FlappyBirdGameTests\bin\Debug\FlappyBirdGame.exe.config
+C:\Users\Admin\Desktop\Game\FlappyBirdGame\FlappyBirdGameTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Admin\Desktop\Game\FlappyBirdGame\FlappyBirdGameTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Admin\Desktop\Game\FlappyBirdGame\FlappyBirdGameTests\obj\Debug\FlappyBirdGameTests.csproj.CopyComplete
+C:\Users\Admin\Desktop\Game\FlappyBirdGame\FlappyBirdGameTests\obj\Debug\FlappyBirdGameTests.dll
+C:\Users\Admin\Desktop\Game\FlappyBirdGame\FlappyBirdGameTests\obj\Debug\FlappyBirdGameTests.pdb
