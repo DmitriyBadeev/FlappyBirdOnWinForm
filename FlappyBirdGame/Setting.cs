@@ -26,13 +26,13 @@ namespace FlappyBirdGame
 
         public static readonly int WidthWindow = 1000;
 
-        public static readonly int VelocityGame = 5;
+        public static readonly int VelocityGame = 4;
 
-        public static readonly double Gravity = 9.8 / 8;
+        public static readonly double Gravity = 9.8 / 10;
 
         public static readonly int FlappyUp = 20;
 
-        public static readonly int StartVelocity = -8;
+        public static readonly int StartVelocity = -7;
 
         public static readonly int WidthBird = 34;
         

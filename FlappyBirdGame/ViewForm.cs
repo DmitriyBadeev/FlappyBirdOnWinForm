@@ -21,6 +21,58 @@ namespace FlappyBirdGame
 
         private bool FlySwitch;
 
+        public ViewForm(GameModel game)
+        {
+            DoubleBuffered = true;
+            Text = Setting.NameOfGame;
+
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+
+            currentGame = game;
+
+            ClientSize = new Size
+            {
+                Width = game.WidthWindow,
+                Height = game.HeightWindow + 80
+            };
+
+            timer = new Timer { Interval = 20 };
+            timer.Tick += (sender, args) => currentGame.UpdateState();
+           
+            currentGame.StateChanged += isGameOver =>
+            {
+                Invalidate();
+
+                if (isGameOver)
+                    timer.Stop();
+            };
+
+            Paint += (sender, args) =>
+            {
+                var bgImage = new Bitmap(Config.BackgroundImagePath);
+                DrawOnFullWidth(bgImage, args, Setting.HeightWindow - bgImage.Height);
+
+                DrawBird(args);
+                DrawWalls(args);
+
+                var baseImage = new Bitmap(Config.BaseImagePath);
+                DrawOnFullWidth(baseImage, args, Setting.HeightWindow);
+
+                if (currentGame.Score > maxScore)
+                    maxScore = currentGame.Score;
+                    
+                DrawScore(args);
+
+                if (currentGame.IsGameOver)
+                    DrawGameOver(args);
+
+                else if (!timer.Enabled)
+                    DrawText(args, "Press any key to start"); 
+            };
+        }
+
         protected override void OnKeyDown(KeyEventArgs e)
         {
             if (currentGame.IsGameOver)
@@ -49,7 +101,7 @@ namespace FlappyBirdGame
                     timer.Start();
 
                 if (e.KeyCode == Keys.Space)
-                    currentGame.FlappyUp();
+                    currentGame.FlappyBird.FlappyUp();
             }
         }
 
@@ -59,8 +111,8 @@ namespace FlappyBirdGame
             {
                 if (!timer.Enabled)
                     timer.Start();
-                
-                currentGame.FlappyUp();
+
+                currentGame.FlappyBird.FlappyUp();
             }
         }
 
@@ -134,58 +186,6 @@ namespace FlappyBirdGame
             args.Graphics.DrawString(text,
                 new Font(FontFamily.GenericMonospace, 15), new SolidBrush(Color.Black),
                 Setting.WidthWindow / 2 - 150, Setting.HeightWindow / 2);
-        }
-
-        public ViewForm(GameModel game)
-        {
-            DoubleBuffered = true;
-            Text = Setting.NameOfGame;
-
-            StartPosition = FormStartPosition.CenterScreen;
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-            MaximizeBox = false;
-
-            currentGame = game;
-
-            ClientSize = new Size
-            {
-                Width = game.WidthWindow,
-                Height = game.HeightWindow + 80
-            };
-
-            timer = new Timer { Interval = 40 };
-            timer.Tick += (sender, args) => currentGame.UpdateState();
-           
-            currentGame.StateChanged += isGameOver =>
-            {
-                Invalidate();
-
-                if (isGameOver)
-                    timer.Stop();
-            };
-
-            Paint += (sender, args) =>
-            {
-                var bgImage = new Bitmap(Config.BackgroundImagePath);
-                DrawOnFullWidth(bgImage, args, Setting.HeightWindow - bgImage.Height);
-
-                DrawBird(args);
-                DrawWalls(args);
-
-                var baseImage = new Bitmap(Config.BaseImagePath);
-                DrawOnFullWidth(baseImage, args, Setting.HeightWindow);
-
-                if (currentGame.Score > maxScore)
-                    maxScore = currentGame.Score;
-                    
-                DrawScore(args);
-
-                if (currentGame.IsGameOver)
-                    DrawGameOver(args);
-
-                else if (!timer.Enabled)
-                    DrawText(args, "Press any key to start"); 
-            };
         }
     }
 }

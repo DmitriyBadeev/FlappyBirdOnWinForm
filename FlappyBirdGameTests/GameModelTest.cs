@@ -50,7 +50,7 @@ namespace FlappyBirdGameTests
 
             Assert.AreEqual(game.FlappyBird.Velocity, 0);
 
-            game.FlappyUp();
+            game.FlappyBird.FlappyUp();
 
             Assert.AreEqual(Setting.StartVelocity, game.FlappyBird.Velocity);
             Assert.AreEqual(Setting.HeightWindow / 2 - Setting.FlappyUp, game.FlappyBird.LocationY);

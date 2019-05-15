@@ -12,25 +12,27 @@ namespace FlappyBirdGame.Models
 {
     public class GameModel
     {
-        public int HeightWindow { get; set; }
+        public int HeightWindow { get; }
 
-        public int WidthWindow { get; set; }
+        public int WidthWindow { get; }
 
-        public int CountWallsInStage { get; set; }
+        public int CountWallsInStage { get; }
 
         public double IntervalBetweenWalls => (WidthWindow / CountWallsInStage) + 40;
 
         public Queue<Wall> Walls { get; private set; }
 
-        public Bird FlappyBird { get; set; }
+        public Bird FlappyBird { get; }
 
-        public double Velocity { get; set; }
+        public double Velocity { get; }
 
         public event Action<bool> StateChanged;
 
-        public bool IsGameOver { get; set; }
+        public bool IsGameOver { get; private set; }
 
-        public int Score { get; set; }
+        public int Score { get; private set; }
+
+        private Random random = new Random();
 
         public GameModel(int countWalls, int startPosition, int offsetFromStartPosition, 
                          int heightWindow, int widthWindow, double velocity)
@@ -51,15 +53,14 @@ namespace FlappyBirdGame.Models
         private void InitWalls(double startPosition, double offsetFromStartPosition)
         {
             Walls = new Queue<Wall>();
-            var random = new Random();
-            var startWindow = random.Next(HeightWindow - Setting.HeightWindowOfWall) + Setting.HeightWindowOfWall;
+            var startWindow = random.Next(Setting.HeightWindowOfWall + 10, HeightWindow - 10);
 
             Walls.Enqueue(new Wall(startPosition + offsetFromStartPosition, startWindow));
 
             var prevWallPosition = startPosition + offsetFromStartPosition;
             for (var i = 1; i < CountWallsInStage; i++)
             { 
-                startWindow = random.Next(HeightWindow - Setting.HeightWindowOfWall) + Setting.HeightWindowOfWall;
+                startWindow = random.Next(Setting.HeightWindowOfWall + 10, HeightWindow - 10);
                 Walls.Enqueue(new Wall(prevWallPosition + IntervalBetweenWalls, startWindow));
                 prevWallPosition += IntervalBetweenWalls;
             }
@@ -131,9 +132,8 @@ namespace FlappyBirdGame.Models
 
                 if (currentWall.Location < -Setting.WidthWall)
                 {
-                    var random = new Random();
                     var lastWall = Walls.Last();
-                    var startWindow = random.Next(HeightWindow - Setting.HeightWindowOfWall) + Setting.HeightWindowOfWall;
+                    var startWindow = random.Next(Setting.HeightWindowOfWall + 10, HeightWindow - 10);
                     var newWall = new Wall(lastWall.Location + IntervalBetweenWalls, startWindow);
                     Walls.Enqueue(newWall);
                 }
@@ -165,12 +165,6 @@ namespace FlappyBirdGame.Models
             }
 
             StateChanged?.Invoke(false);
-        }
-
-        public void FlappyUp()
-        {
-            FlappyBird.Velocity = Setting.StartVelocity;
-            FlappyBird.LocationY -= Setting.FlappyUp;
         }
     }
 }

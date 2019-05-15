@@ -39,5 +39,11 @@ namespace FlappyBirdGame.Models
             LocationY = y;
             LocationX = x;
         }
+
+        public void FlappyUp()
+        {
+            Velocity = Setting.StartVelocity;
+            LocationY -= Setting.FlappyUp;
+        }
     }
 }
